@@ -49,3 +49,4 @@ do
       exit 1 # Yes, get out of script with error
    fi
 done
+
