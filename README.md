@@ -7,7 +7,7 @@ Scripts and VMs used to create and maintain the lab environment for Port Angeles
 
 <b>removeperms.sh</b> - removes all the student permissions from the resource pools - this is done to start a new school year!
 
-<b>manvms.sh</b> - the main script that creates copies of the vms; resets them to the original snapshot; and can delete, poweron, poweroff machines.  The script is menu driven.  I do send much info the screen.  I like to see what is going on.
+<b>manvms.sh</b> - the main script that creates copies of the vms; resets them to the original snapshot; and can delete, poweron, poweroff machines.  The script is menu driven.  I do send much info to the screen.  I like to see what is going on.
 
 The actual vms used are:
 
