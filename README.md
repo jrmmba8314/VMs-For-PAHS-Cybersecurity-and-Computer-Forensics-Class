@@ -7,8 +7,19 @@ Scripts and VMs used to create and maintain the lab environment for Port Angeles
 
 <b>removeperms.sh</b> - removes all the student permissions from the resource pools - this is done to start a new school year!
 
-<b>manvms.sh</b> - the main script that creates copies of the vms; resets them to the original snapshot; and can delete, poweron, poweroff machines.
+<b>manvms.sh</b> - the main script that creates copies of the vms; resets them to the original snapshot; and can delete, poweron, poweroff machines.  The script is menu driven.  I do send much info the screen.  I like to see what is going on.
 
-Files will be added over the next couple of weeks.  When all complete, a note will be put in the Readme file along with additional document.
+The actual vms used are:
+
+<ul>
+   <li><b>android6</b> - adopted from http://www.android-x86.org/releases/releasenote-6-0-r3 Modified to work on ESXi</li>
+   <li><b>ctf8</b> - adopted from https://sourceforge.net/projects/lampsecurity/files/CaptureTheFlag/CTF8/  Modified to allow script to automatically set static ips</li>
+   <li><b>KaliRolling</b> - main Kali install with various updates. From https://www.kali.org/</li>
+   <li><b>ProgrammingUbuntu</b> - main Ubuntu with a variety of programming environments installed. Originally from https://www.ubuntu.com/</li>
+   <li><b>PureWindows10</b> - install of Microsoft Windows 10. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.</li>
+   <li><b>UbuntuForensics</b> - adopted from https://digital-forensics.sans.org/community/downloads</li>
+   <li><b>VulnerableWebApps</b> - adopted from http://www.vulnerablewebapps.org/ Modified to allow script to automatically set static ips</li>
+   <li><b>Windows2012R2</b> - install of Microsoft Windows Server 2012R2. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.</li>
+</ul>
 
 NOT COMPLETED
