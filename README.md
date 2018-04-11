@@ -12,7 +12,8 @@ Scripts and VMs used to create and maintain the lab environment for Port Angeles
 The actual vms used are:
 
 <ul>
-   <li><b>android6</b> - adopted from http://www.android-x86.org/releases/releasenote-6-0-r3 Modified to work on ESXi</li>
+   <li><b>android6</b> - adopted from http://www.android-x86.org/releases/releasenote-6-0-r3 Modified to work on ESXi<br>
+   download from http://cybersecurity.portangelesschools.org/android6.zip</li>
    <li><b>ctf8</b> - adopted from https://sourceforge.net/projects/lampsecurity/files/CaptureTheFlag/CTF8/  Modified to allow script to automatically set static ips</li>
    <li><b>KaliRolling</b> - main Kali install with various updates. From https://www.kali.org/</li>
    <li><b>ProgrammingUbuntu</b> - main Ubuntu with a variety of programming environments installed. Originally from https://www.ubuntu.com/</li>
