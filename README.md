@@ -13,22 +13,22 @@ The actual vms used are:
 
 <ul>
    <li><b>android6</b> - adopted from http://www.android-x86.org/releases/releasenote-6-0-r3 Modified to work on ESXi<br>
-   download from http://cybersecurity.portangelesschools.org/android6.zip</li>
+   download from http://cybersecurity.portangelesschools.org/android6.zip<br></li>
    
    <li><b>ctf8</b> - adopted from https://sourceforge.net/projects/lampsecurity/files/CaptureTheFlag/CTF8/  Modified to allow script to automatically set static ips<br>
-   download from http://cybersecurity.portangelesschools.org/ctf8.zip</li></li>
+   download from http://cybersecurity.portangelesschools.org/ctf8.zip<br></li>
    
-   <li><b>KaliRolling</b> - main Kali install with various updates. From https://www.kali.org/</li>
+   <li><b>KaliRolling</b> - main Kali install with various updates. From https://www.kali.org/<br></li>
    
-   <li><b>ProgrammingUbuntu</b> - main Ubuntu with a variety of programming environments installed. Originally from https://www.ubuntu.com/</li>
+   <li><b>ProgrammingUbuntu</b> - main Ubuntu with a variety of programming environments installed. Originally from https://www.ubuntu.com/<br></li>
    
-   <li><b>PureWindows10</b> - install of Microsoft Windows 10. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.</li>
+   <li><b>PureWindows10</b> - install of Microsoft Windows 10. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.<br></li>
    
-   <li><b>UbuntuForensics</b> - adopted from https://digital-forensics.sans.org/community/downloads</li>
+   <li><b>UbuntuForensics</b> - adopted from https://digital-forensics.sans.org/community/downloads<br></li>
    
-   <li><b>VulnerableWebApps</b> - adopted from http://www.vulnerablewebapps.org/ Modified to allow script to automatically set static ips</li>
+   <li><b>VulnerableWebApps</b> - adopted from http://www.vulnerablewebapps.org/ Modified to allow script to automatically set static ips<br></li>
    
-   <li><b>Windows2012R2</b> - install of Microsoft Windows Server 2012R2. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.</li>
+   <li><b>Windows2012R2</b> - install of Microsoft Windows Server 2012R2. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.<br></li>
 </ul>
 
 NOT COMPLETED
