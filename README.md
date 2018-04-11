@@ -1,5 +1,5 @@
 # VMs-For-PAHS-Cybersecurity-and-Computer-Forensics-Class
-Scripts and VMs used to create and maintain the lab environment for Port Angeles High School's Cybersecurity and Computer Forensics classes
+Scripts and VMs used to create and maintain the lab environment for Port Angeles High School's Cybersecurity and Computer Forensics classes.  Lab directions, assignments, and videos can be found at http://cybersecurity.portangelesschools.org
 
 <b>createPools.sh</b> - used to create the resource pools for the students.  Each student is manually assigned a resource pool by giving the select permissions to that student on that resource pool.
 
