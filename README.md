@@ -33,7 +33,7 @@ The actual vms used are:
    <li><b>UbuntuForensics</b> - adopted from https://digital-forensics.sans.org/community/downloads <br>
    download from http://cybersecurity.portangelesschools.org/UbuntuForensics.zip</li>
    
-   <li><b>VulnerableWebApps</b> - adopted from http://www.vulnerablewebapps.org/ Modified to allow script to automatically set static ips<br> <br>
+   <li><b>VulnerableWebApps</b> - adopted from http://www.vulnerablewebapps.org/ Modified to allow script to automatically set static ips <br>
    download from http://cybersecurity.portangelesschools.org/VulnerableWebApps.zip</li>
    
    <li><b>Windows2012R2</b> - install of Microsoft Windows Server 2012R2. Just a straight install with no updates nor configurations. No vm posted due to copyright issues.<br></li>
