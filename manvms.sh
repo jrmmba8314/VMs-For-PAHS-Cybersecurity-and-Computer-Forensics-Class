@@ -205,11 +205,11 @@ else
    do
       if [ $myCount -lt 10 ]
       then
-         rpool=student0$myCount
-         NumWorkingvm=$workingvm0$myCount
+         rpool="student0$myCount"
+         NumWorkingvm="$workingvm"0"$myCount"
       else
-         rpool=student$myCount
-         NumWorkingvm=$workingvm$myCount
+         rpool="student$myCount"
+         NumWorkingvm="$workingvm""$myCount"
       fi
       
       ##########
@@ -217,10 +217,11 @@ else
       ##########
       directory="/vmfs/volumes/StudentVMs/$workingvm/$NumWorkingvm"
 	  echo "*** Working with $directory ***"
+      
       if [ ! -d "$directory" ]
       then
          echo "   Create directory"
-         echo "mkdir $directory"
+         mkdir $directory
       fi
       
       ##########
@@ -234,7 +235,7 @@ else
       # copy over rest of files
       ##########
 	  echo "   Copying rest of files"
-      execStr="find \"/vmfs/volumes/SYSTEMS/$workingvm/\" -maxdepth 1 -type f -print | grep -v \".vmdk\" | while read file; do cp \"$file\" \"$directory\"; done;"
+      execStr="find \"/vmfs/volumes/SYSTEMS/$workingvm/\" -maxdepth 1 -type f -print | grep -v \".vmdk\" | while read file; do cp \"\$file\" \"$directory\"; done;"
 	  eval $execStr
 
       ##########
@@ -251,7 +252,7 @@ else
          # create original snapshot
          ##########      
 	     echo "   Create Snapshot"
-         execStr="vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1, \" Original\"}'  | xargs vim-cmd vmsvc/snapshot.create"
+         execStr="vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print \$1, \" Original\"}'  | xargs vim-cmd vmsvc/snapshot.create"
 	     eval $execStr
 	  else
          echo "   Wait for Snapshot.  Needs IP Address";
