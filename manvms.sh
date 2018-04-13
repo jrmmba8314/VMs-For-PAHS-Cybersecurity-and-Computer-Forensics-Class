@@ -144,13 +144,14 @@ then
             # whether the vm has been copies or moved
             # Default is copied so I just let the question
             # time out.
-            # This timeout is 4 minutes.  I have not found
-            # a way to shorten it.  See
+            # This timeout default is 4 minutes.
+            # I tried to changed it to 15 seconds.
+            # Still working on this
             # https://kb.vmware.com/s/article/2113542
             # 
             # Note to get the seconds use date +%s
             echo "powering on $vmmachine"
-            execStr="vim-cmd vmsvc/power.on $vmmachine &"
+            execStr="vim-cmd vmsvc/power.on $vmmachine"
             eval $execStr;;
                                                                      
          2) ###############
@@ -252,7 +253,7 @@ else
          # create original snapshot
          ##########      
 	     echo "   Create Snapshot"
-         execStr="vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print \$1, \" Original\"}'  | xargs vim-cmd vmsvc/snapshot.create"
+         execStr="vim-cmd vmsvc/getallvms | grep $NumWorkingvm | vim-cmd vmsvc/getallvms | grep $NumWorkingvm | awk '{print \$1, \"Original\"}'  | xargs vim-cmd vmsvc/snapshot.create"
 	     eval $execStr
 	  else
          echo "   Wait for Snapshot.  Needs IP Address";
@@ -276,13 +277,14 @@ else
          # whether the vm has been copies or moved
          # Default is copied so I just let the question
          # time out.
-         # This timeout is 4 minutes.  I have not found
-         # a way to shorten it.  See
+         # This timeout default is 4 minutes.
+         # I tried to changed it to 15 seconds.
+         # Still working on this
          # https://kb.vmware.com/s/article/2113542
          # 
          # Note to get the seconds use date +%s
          echo "   powering on $vmmachine"
-         execStr="vim-cmd vmsvc/power.on $vmmachine &"
+         execStr="vim-cmd vmsvc/power.on $vmmachine"
          eval $execStr
       done
 
