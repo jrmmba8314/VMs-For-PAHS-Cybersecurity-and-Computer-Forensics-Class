@@ -1,6 +1,8 @@
 # VMs-For-PAHS-Cybersecurity-and-Computer-Forensics-Class
 Scripts and VMs used to create and maintain the lab environment for Port Angeles High School's Cybersecurity and Computer Forensics classes.  Lab directions, assignments, and videos can be found at http://cybersecurity.portangelesschools.org
 
+<b>add_users.ps1</b> - a powershell script to add users to my Windows Server 2012 AD.  Can use the same file as addperms.sh
+
 <b>createPools.sh</b> - used to create the resource pools for the students.  Each student is manually assigned a resource pool by giving the select permissions to that student on that resource pool.
 
 <b>addperms.sh</b> - finds next available resource pool and assigns it to the user read from the file user.txt
