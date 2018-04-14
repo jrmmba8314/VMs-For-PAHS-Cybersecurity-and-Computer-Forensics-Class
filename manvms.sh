@@ -134,7 +134,7 @@ echo ""
 
 if [ $manchoice != 4 ]
 then
-   for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}')
+   for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}' | sort -n)
    do
       case $manchoice in
          1) ###############
@@ -148,19 +148,28 @@ then
             # I tried to changed it to 15 seconds.
             # Still working on this
             # https://kb.vmware.com/s/article/2113542
+            # so I just force the question
             # 
             # Note to get the seconds use date +%s
             echo "powering on $vmmachine"
-            execStr="vim-cmd vmsvc/power.on $vmmachine"
-            eval $execStr;;
-                                                                     
+            execStr="vim-cmd vmsvc/power.on $vmmachine &"
+            eval $execStr
+            sleep 30
+
+            msgId=$(vim-cmd vmsvc/message $vmmachine | grep "Virtual machine message" | sed "s/Virtual Machine message//" | sed "s/Virtual//; s/machine//; s/message//; s/://;s/ //g")
+            if [ "$msgId" != "" ]
+            then
+               execStr="vim-cmd vmsvc/message $vmmachine $msgId 2"
+               eval $execStr
+            fi;;
+
          2) ###############
             # PowerOff
             ###############
             echo "powering off $vmmachine"
 			execStr="vim-cmd vmsvc/power.off $vmmachine"
             eval $execStr;;
-                                                                                                                  
+
          3) ###############
             # Revert
             ###############
@@ -185,13 +194,13 @@ else
    ###############
    # Recreate
    ###############
-                                                                                                                                        
+
    echo "Recreate"
    
    ###############
    # Delete current first
    ###############
-   for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}')
+   for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}'  | sort -n)
    do
 	  echo "Deleting $vmmachine"
       execStr="vim-cmd vmsvc/power.off $vmmachine"
@@ -202,7 +211,7 @@ else
 	  eval $execStr
    done
    
-   for myCount in $(seq 1 1 100)
+   for myCount in $(seq 1 1 10)  # JRMMBA - in production this is 100
    do
       if [ $myCount -lt 10 ]
       then
@@ -268,7 +277,7 @@ else
    then
       echo ""
 	  echo "*** Needs Static IP - $workingvm" 
-      for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}')
+      for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}'  | sort -n)
       do
          ###############
          # PowerOn
@@ -281,11 +290,20 @@ else
          # I tried to changed it to 15 seconds.
          # Still working on this
          # https://kb.vmware.com/s/article/2113542
+         # so instead of just force the question
          # 
          # Note to get the seconds use date +%s
          echo "   powering on $vmmachine"
-         execStr="vim-cmd vmsvc/power.on $vmmachine"
+         execStr="vim-cmd vmsvc/power.on $vmmachine &"
          eval $execStr
+         sleep 30
+         
+         msgId=$(vim-cmd vmsvc/message $vmmachine | grep "Virtual machine message" | sed "s/Virtual Machine message//" | sed "s/Virtual//; s/machine//; s/message//; s/://;s/ //g")
+         if [ "$msgId" != "" ]
+         then
+            execStr="vim-cmd vmsvc/message $vmmachine $msgId 2"
+            eval $execStr
+         fi
       done
 
       ##########
@@ -299,10 +317,10 @@ else
       do
          echo "   ---> Sleeping minute $myMinutes"
          sleep 60   # I did the loop so I could echo every minute.  The screen
-                    # disappear for that long made me nervous.
+                    # disappearing for that long made me nervous.
       done
       
-      for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}')
+      for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}'  | sort -n)
       do
          ###############
          # Power off.  We can only have 1 machine on at a time to do the rest of the work
@@ -331,7 +349,7 @@ else
       # 
       ##########
       
-      for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}')
+      for vmmachine in $(vim-cmd vmsvc/getallvms | grep $workingvm | vim-cmd vmsvc/getallvms | grep $workingvm | awk '{print $1}' | sort -n)
       do
          NumWorkingvm=$(vim-cmd vmsvc/getallvms | grep $vmmachine | awk '{print $2}')
          
@@ -351,8 +369,16 @@ else
          # first wipe out known_hosts.  Old keys cause problems
          sed -i '/172.17.0.50/d' /.ssh/known_hosts
          echo "   powering on $vmmachine"
-         execStr="vim-cmd vmsvc/power.on $vmmachine"
+         execStr="vim-cmd vmsvc/power.on $vmmachine &"
          eval $execStr
+         sleep 30
+         
+         msgId=$(vim-cmd vmsvc/message $vmmachine | grep "Virtual machine message" | sed "s/Virtual Machine message//" | sed "s/Virtual//; s/machine//; s/message//; s/://;s/ //g")
+         if [ "$msgId" != "" ]
+         then
+            execStr="vim-cmd vmsvc/message $vmmachine $msgId 2"
+            eval $execStr
+         fi
 
          ##########
          # wait for machine to completely boot up
