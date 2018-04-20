@@ -40,6 +40,7 @@ echo "q) Quit"
 read -p "Choice: " vmchoice 
 echo ""
 
+fileWhere="StudentVMs" # this is the default volume but it is too small to hold all of the vms
 needsIP=0
 configFile=""
 case $vmchoice in
@@ -47,14 +48,17 @@ case $vmchoice in
    c) needsIP=1;
       configFile="/etc/sysconfig/network-scripts/ifcfg-eth0";
       workingvm="ctf8";;
-   k) workingvm="KaliRolling";;
+   k) workingvm="KaliRolling"
+      fileWhere="SYSTEMS";;
    u) workingvm="ProgrammingUbuntu";;
    w) workingvm="PureWindows10";;
-   f) workingvm="UbuntuForensics";;
+   f) workingvm="UbuntuForensics"
+      fileWhere="SYSTEMS";;
    v) needsIP=1;
       configFile="/etc/network/interfaces";
       workingvm="VulnerableWebApps";;
-   s) workingvm="Windows2012R2";;
+   s) workingvm="Windows2012R2"
+      fileWhere="SYSTEMS";;
    q) echo "*** Bye";
       exit 0;;
    *) echo "*** Invalid VM choice";
@@ -211,7 +215,7 @@ else
 	  eval $execStr
    done
    
-   for myCount in $(seq 1 1 10)  # JRMMBA - in production this is 100
+   for myCount in $(seq 1 1 100)
    do
       if [ $myCount -lt 10 ]
       then
@@ -225,7 +229,7 @@ else
       ##########
       # If needed create directory
       ##########
-      directory="/vmfs/volumes/StudentVMs/$workingvm/$NumWorkingvm"
+      directory="/vmfs/volumes/$fileWhere/$workingvm/$NumWorkingvm"
 	  echo "*** Working with $directory ***"
       
       if [ ! -d "$directory" ]
@@ -311,7 +315,7 @@ else
       # And make sure all are through booting up.  Nothing magically about the time
       # Just seemed right in my lab setting
       ##########
-      maxMinutes=5  # this number is still in test mode JRMMBA should be 10
+      maxMinutes=5 
       echo "   Sleeping for $maxMinutes"
       for myMinutes in $(seq 1 1 $maxMinutes)
       do
@@ -413,7 +417,7 @@ else
          ##########
          # update the appropriate network configuration
          echo "   Update network configuration"
-         sed -i -e "s/VM Network/LabVMs/g" "/vmfs/volumes/StudentVMs/$workingvm/$NumWorkingvm/$workingvm.vmx"
+         sed -i -e "s/VM Network/LabVMs/g" "/vmfs/volumes/$fileWhere/$workingvm/$NumWorkingvm/$workingvm.vmx"
          
          ##########
          # create snapshot
